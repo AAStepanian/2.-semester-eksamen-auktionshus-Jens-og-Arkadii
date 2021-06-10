@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 08, 2021 at 05:47 PM
+-- Generation Time: Jun 10, 2021 at 10:04 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -34,6 +34,19 @@ CREATE TABLE `bid` (
   `bid_price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `bid`
+--
+
+INSERT INTO `bid` (`username`, `item_id`, `bid_price`) VALUES
+('HansJensen', 13, 1910),
+('HansJensen', 20, 160),
+('HansJensen', 21, 1960),
+('HansJensen', 12, 2190),
+('StenStensen', 19, 420),
+('StenStensen', 26, 880),
+('StenStensen', 25, 520);
+
 -- --------------------------------------------------------
 
 --
@@ -48,7 +61,7 @@ CREATE TABLE `item` (
   `init_bid` double NOT NULL,
   `time_end` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `bid_num` varchar(4) NOT NULL,
-  `current_bid` float NOT NULL
+  `current_bid` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -56,8 +69,18 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_n`, `item_d`, `item_img`, `init_bid`, `time_end`, `bid_num`, `current_bid`) VALUES
-(12, 'Sovs', 'Ægte sovs', 'Donger.png', 50, '30:06:2050', '11', 1520),
-(13, 'WUNDERWAFFE', 'Sehr gut ', 'Wunderwaffe.png', 50, '30:oct:2023', '12', 200);
+(12, 'FANBYN', 'Good shape, no damage', 'FANBYN.png', 50, '30:06:2050', '14', 2190),
+(13, 'ADDE', 'Good shape, no damage', 'ADDE.png', 50, '30:oct:2023', '17', 1910),
+(19, 'LEIFARNE', 'Good shape, no damage', 'LEIFARNE.png', 200, '30:May:20303', '5', 420),
+(20, 'RONNINGE', 'Good shape, no damage', 'RONNINGE.png', 300, '20:00', '2', 160),
+(21, 'TOBIAS', 'Good shape, no damage', 'TOBIAS.png', 50, '30:May:2030', '4', 1960),
+(22, 'FLUGEBO', 'Good shape, no damage', 'FLUGEBO.png', 50, '30:OCT:2021', '1', 250),
+(23, 'SINNERLIG', 'Good shape, no damage', 'SINNERLIG.png', 50, '30:SEP:2021', '1', 200),
+(24, 'TOMMARYD', 'Good shape, few scratches', 'TOMMARYD.png', 50, '31:NOV:2021', '1', 300),
+(25, 'MELLTORP', 'Good shape, few scratches', 'MELLTORP.png', 50, '28:FEB:2022', '2', 520),
+(26, 'LACK', 'Good shape, few scratches', 'LACK.png', 50, '22:OCT:2021', '2', 880),
+(27, 'GLADOM', 'Good shape, few scratches', 'GLADOM.png', 50, '21:OCT:2021', '1', 300),
+(28, 'LINNMON', 'Good shape, few scratches', 'LINNMON.png', 50, '22:JUL:2021', '1', 400);
 
 -- --------------------------------------------------------
 
@@ -76,30 +99,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`) VALUES
-(1, 'Sten', '$2y$10$21UgOAWjw7tSynQmn/jX9.dr7CUnjPQnDs7yXTzPXuWR/T4QDfTx.'),
-(2, 'Jokumlokumsen', '$2y$10$HHAEFUsAPMYoXgXP7QC4QeBMi.ECx/Rd9qTDbrRwNyhAK3K/3oGem'),
-(3, 'test', '$2y$10$UnIk4nRKQv.GQIzic.WHgeha8XaruxpxqBvmOV0xAxiifMSAf/I9e'),
-(4, 'asdasd', '$2y$10$WuM/4HJXErJXl5gmXU4yj.ikxjgm4vNYcQSlOdZ1bEdR9ReGJd.bm'),
-(5, 'asdasdasd', '$2y$10$9IYf8hr5aXiXkfgx4damT.709WLY9xEN8dGlUkbNkiFn07BXOKDbq'),
-(6, 'asdasdasdasdasd', '$2y$10$FLHia.XbTfBlVjKHsoKm7uwgBilFebb86kRLPGlhOUndOCZnanIh2'),
-(7, 'jernmandennn', '$2y$10$SgJYAY7aAWMACzbmTFvyOO2buNjGO9T6G9kvi6Gp8vXetBzrP71Ou'),
-(8, 'asdasdssss', '$2y$10$1DuzdTBarnTlUmbiS1rPH.Oam0Jgr8l/ysdh.nk/uJYSUt4i10RQq'),
-(9, 'asdaddsasad', '$2y$10$64BWCPmRdqy8c7zLlIqSoOUz0ZWgjy4Eic3yjmTb3WSJDGpkR4Nd.'),
-(10, 'sdtoder', '$2y$10$z4jepk7a3XFp8jnPY9kHF.rsQSPFkqO/0Pa93LpsGqQAFLoHye3xO'),
-(11, 'asdasdasdsssssss', '$2y$10$AZpIIgJdqinmE3EYa/7xj.Ryl2WNhoc7/KkspCnQ7UPx1/8Sn70..'),
-(12, 'Stensteb', '$2y$10$/XrthTO9adSQpQ4gs30fb.46sIUVfXySXj.eSKLC/ua2nVuOtiHAO'),
-(13, 'Stensssssssss', '$2y$10$PWyMNiXiQRpusAwcJA0aCOE6JaAfxLkuGfS50quc4v69XAVawLu5e'),
-(14, 'Stenssssssssssssssssssss', '$2y$10$fv4F/uwbie9xgdHxvBCjzOl8EzaVCoksHjtwIyVJ7fR8FbLrzogBC'),
-(15, 'Sten22', '$2y$10$4D122IL25KU0eKGElrVgsOXiyRqXDu/K9t8AbyDKxCv8BNdFcdUP.'),
-(16, 'Sten356', '$2y$10$OINVf3IVJ.Ol78aIz5LNhuXekr6OJj67cbRq8ipETLWpOVZFcD5.m'),
-(17, 'jesns', '$2y$10$pafV0GnsG3r8hx906Rxv2.nbf8GaAsbf1vfzkWRJiaLr4sub4V9ZG'),
-(18, 'Edvard', '$2y$10$o7eGVAn8io/fxUO3/QB3WejaXRXCdGmxncBG9p84FnFdTgv7UP7h6'),
-(19, 'asdasdssssssssssssssssss', '$2y$10$uldD5n5c72c03hDWZkGAsOt8Oxf8E/An64NWW3HbWr9.V8F.khAny'),
-(20, '1812573', '$2y$10$o/cysdLygQgPxhpR.TkoEuIKITzeBth.6gUCc.s7jf95etK6IR7LW'),
-(21, 's', '$2y$10$D2hQUPU6.0eviwyDWY/T9ObKtQp19TQ4b92/RdHd6KDh1tN.ARI16'),
-(22, 'asdasdasdasdasdsadadsadss', '$2y$10$kQv1A2fYB.66ghAMuGMbBOToXm9CodlwJFD9uM55Z/pXEw.Ajl5NO'),
-(23, 'lort', '$2y$10$wGFOtFlW6ID34pfg74BcpewYVLgWUe9Me8Lvvq1Fglzv2LdCMemNW'),
-(24, 'svin', '$2y$10$q0n32lyaDdjcHVB7eAuXf.W/M6e2YXDQgGLRdfQX4kkVcB7LtfzmS');
+(26, 'HansHansen', '$2y$10$upo0hyInTEhTwUGUEX/SwefB3vW7Hg/8FczfXwDL.UGW3aBhetK2W'),
+(27, 'StenStensen', '$2y$10$ALadzeqob6lej7e/SmFe0O2UmqYiPXFuoLKHVl9TRswMX4bN8MQBC'),
+(28, 'SorenSorensen', '$2y$10$jETq8A4KXGkTlm3LxtvQpeVTksL0t.J24feLPQ5bZy4T/rIuX2mC2'),
+(29, 'BjornBjornson', '$2y$10$0Jt9BLYpTe9pQjpItFHrrO7BwfXLimR53qBZnFEHzDlRL3.OuIh.O'),
+(30, 'HansJensen', '$2y$10$mOx91EjpxrulTtERE8dKceGdnCdRwE4ben9i4RwH0u2LIcm6.e.z2');
 
 --
 -- Indexes for dumped tables
@@ -127,13 +131,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
