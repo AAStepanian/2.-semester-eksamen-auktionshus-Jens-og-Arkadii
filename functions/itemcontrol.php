@@ -30,3 +30,35 @@ $stmt->bind_param("s", $iname);
 $stmt->execute();
 $result = $stmt->get_result();
 /* checks if there is an item with the same name */
+
+if($result->num_rows>=1)
+{
+$value = "duplicate";
+$conn->close();
+header("Location: ..\sell_item.php?item=$value");
+}
+
+else
+{
+$statement = "INSERT INTO item(item_id, item_n, item_d, item_img, init_bid, time_end, bid_num, current_bid) VALUES(NULL, ?, ?, ?, ?, ?, 1, ?)";
+$stmt = $conn->prepare($statement);
+$stmt->bind_param("sssdsd", $iname, $idesc, $iipic, $inibid, $time_end, $bidc);
+$stmt->execute();
+$value = "success";
+$conn->close();
+header("Location: ..\sell_item.php?item=$value");
+}
+}
+/*insert into table if not a dupe*/
+
+
+else
+{
+header("Location: ..\sell_item.php");
+}
+
+
+
+?>
+  </body>
+</html>
