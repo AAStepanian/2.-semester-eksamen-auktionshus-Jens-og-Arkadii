@@ -19,3 +19,26 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $hash = $row["password"];
+
+if(password_verify($_POST["password"], $hash))
+{
+  echo "Succesfully logged in";
+  session_start();
+  $_SESSION["username"] = $_POST["username"];
+  header("Location: ..\itemdisplay.php");
+}
+
+else {
+  header("Location:..\relogin.php");
+}
+}
+
+else
+{
+  header("Location:..\login.php");
+}
+
+
+     ?>
+  </body>
+</html>
