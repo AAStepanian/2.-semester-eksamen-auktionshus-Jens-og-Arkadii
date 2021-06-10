@@ -21,3 +21,33 @@ if(isset($_GET["user"]))
 if($_GET["user"] == "success")
 {
 echo "<h4>Succesfully registered user. Welcome! </h4>";
+
+}
+
+
+else if($_GET["user"] == "duplicate")
+{
+echo "<h4>User already exists. Please try another username</h4>";
+}
+}
+
+else
+{
+echo "<h4>Please add a username and password</h4>";
+}
+
+echo "<h4>Please fill out the fields in order to sign up";
+echo "<br>";
+echo "<label class='label' for='username'>Username: </label>";
+echo "<input class='text' type='text' name='username' placeholder='Username'>";
+echo "<br>";
+echo "<label class='label' for='password'>Password: </label>";
+echo "<input type='password' for='password' name='password' placeholder='Password'>";
+echo "<br>";
+echo "<input class='submit' type='submit' value='Register'>";
+echo "</form>";
+
+ ?>
+
+<?php include 'inc\footer.php';
+?>
