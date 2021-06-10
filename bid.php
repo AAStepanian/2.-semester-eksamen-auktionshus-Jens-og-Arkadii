@@ -40,3 +40,47 @@ $statement = "SELECT * FROM item WHERE item_id=?";
 $stmt = $conn->prepare($statement);
 $stmt->bind_param("s", $item_id);
 $stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$bid = $_POST["bid"];
+$username = $_SESSION["username"];
+
+if($bid>$row["current_bid"])
+{
+$statement = "UPDATE item SET current_bid=? WHERE item_id=?";
+$stmt = $conn->prepare($statement);
+$stmt->bind_param("dd", $bid, $item_id);
+$stmt->execute();
+/*bid value update*/
+
+$statement = "UPDATE item SET bid_num=bid_num+1 WHERE item_id=?";
+$stmt = $conn->prepare($statement);
+$stmt->bind_param("d", $item_id);
+$stmt->execute();
+/*number of bid update*/
+
+$statement = "INSERT INTO bid(username, item_id, bid_price) VALUES(?, ?, ?)";
+$stmt = $conn->prepare($statement);
+
+$stmt->bind_param("sid", $username, $item_id, $bid);
+$stmt->execute();
+
+$statement = "DELETE FROM bid WHERE bid_price<? AND item_id=?";
+$stmt = $conn->prepare($statement);
+$stmt->bind_param("dd", $bid, $item_id);
+$stmt->execute();
+
+echo "Congrats, the current bid value is $".$bid;
+}
+else
+{
+  echo "Your bid must be greater than the current bid price.";
+
+}
+}
+$conn->close();
+}
+
+ ?>
+  </body>
+</html>
