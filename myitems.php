@@ -34,3 +34,29 @@ while($row = $result->fetch_assoc())
 {
 $iid = $row["item_id"];
 $iname= $row["item_n"];
+$iimg = "images/";
+$iimg = $iimg.$row["item_img"];
+
+$link = "item_details.php?item_id=";
+$item_d = $link.$iid;
+
+echo "<div class='item'>";
+if($_SESSION["username"] == "$uname"){
+echo "<div class='item_row'>item name: $iname</div>";
+echo "<div class='item_row'>item Id: $iid</div>";
+echo "<div class='item_row'>Bidding user: '$uname'</div>";
+echo "<img class='item_img' src='$iimg' alt='image'>";
+echo "<div class='item_row'>Current bid: $$icurrentp</div>";
+echo "<br>";
+echo "</div>";
+
+}
+}
+}
+$conn->close();
+}
+}
+
+     ?>
+  </body>
+</html>
