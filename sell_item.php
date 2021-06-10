@@ -40,3 +40,34 @@ echo "<br>";
 echo "<label class='label' for='item_n'>Item name:</label>";
 echo "<input class='text' type='text' name='item_n'/>";
 echo "<br>";
+
+echo "<label class='label' for='item_d'>Item description:</label>";
+echo "<input class='text' type='text' name='item_d'/>";
+echo "<br>";
+
+
+echo "<label class='label' for='time_end'>Ending bid time:</label>";
+echo "<input class='text' type='text' name='time_end'/>";
+echo "<br>";
+
+echo "<label class='label' for='item_img'>Picture:</label>";
+echo "<input class='text' type='file' value='item_img' name='item_img'/>";
+echo "<br>";
+
+echo "<label class='label' for='init_bid'>Initial bid in $:</label>";
+echo "<input class='text' type='text' name='init_bid'/>";
+echo "<br>";
+
+echo "<label class='label' for='current_bid'>Current bid in $:</label>";
+echo "<input class='text' type='text' name='current_bid'/>";
+echo "<br>";
+
+
+
+echo "<input class='submit' type='submit' value='Sell Item' name='Put up for sale'/>";
+echo "</form>";
+
+
+ ?>
+  </body>
+</html>
